@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="bg">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/"></ion-back-button>
+      <ion-back-button defaultHref="/user/list"></ion-back-button>
     </ion-buttons>
     <ion-title></ion-title>
   </ion-toolbar>
@@ -20,53 +20,50 @@
       </ion-card-header>
   
       <ion-card-content>
-  <form >
+  <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
  
 
       <ion-item>
-      <ion-label position="floating" for="username"> Username </ion-label>
-      <ion-input type="text"name="username"> </ion-input>
+      <ion-label position="floating" > Username </ion-label>
+      <ion-input type="text"name="username"  [(ngModel)]="form.username" name="name" > </ion-input>
     </ion-item>
 
      
+    <ion-item>
+      <ion-label position="floating" for="firstname">fistname</ion-label>
+      <ion-input type="text"name="firtname" [(ngModel)]="form.firstname" required > </ion-input>
+    </ion-item>
+     
+
+      <!-- lastname -->
+
+    <ion-item>
+      <ion-label position="floating" for="lastname">lastname</ion-label>
+      <ion-input type="text"  name="lastname"[(ngModel)]="form.lastname" required ></ion-input>
+    </ion-item>
      
 
     <!-- email -->
 
         <ion-item>
         <ion-label position="floating" for="email">Email</ion-label>
-        <ion-input type="email" name="email" required email > </ion-input>
+        <ion-input type="email" name="email" required email [(ngModel)]="form.email" name="email" > </ion-input>
       </ion-item>
         
        
 
-                <!-- firstname -->
-  
-      <ion-item>
-        <ion-label position="floating" for="firstname">fistname</ion-label>
-        <ion-input type="text"name="firtname"  required > </ion-input>
-      </ion-item>
-       
-
-        <!-- lastname -->
-
-      <ion-item>
-        <ion-label position="floating" for="lastname">lastname</ion-label>
-        <ion-input type="text"  name="lastname" required ></ion-input>
-      </ion-item>
-       
-
-        <!-- password -->
-
  
       <ion-item>
         <ion-label position="floating" for="password">Password</ion-label>
-        <ion-input type="password"  name="password" required minlength="6"  ></ion-input>
+        <ion-input type="password"  name="password" required minlength="6"  [(ngModel)]="form.password" name="password"></ion-input>
       </ion-item>
        
+
+     
+
       <ion-item>
         <ion-label position="floating"> Role</ion-label>
-        <ion-select >
+        <ion-select [(ngModel)]="personne.roles">
           <ion-select-option [value]="role.name" *ngFor="let r of role">{{ r.name }}</ion-select-option>
       </ion-select>
         
@@ -75,7 +72,7 @@
        
        
  
-        <ion-button  expand="block"   color="a" class="btn btn-primary btn-block">Add</ion-button>
+        <ion-button  expand="block"   color="a" class="btn btn-primary btn-block" (click)="onSubmit()">Add</ion-button>
        
 
      

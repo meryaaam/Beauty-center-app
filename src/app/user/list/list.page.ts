@@ -20,39 +20,14 @@ export class ListPage implements OnInit {
   ngOnInit() {
     this.P() ;
   }
-  add() { this.router.navigate(['admin/user/add']); }
-  edite(id) { this.router.navigate(['/admin/user/edit/', id]); }
+  add() { this.router.navigate(['user/add']); }
+  edite(id) { this.router.navigate(['/user/edit/', id]); }
 
-  detail(id) { this.router.navigate(['admin/user/detail/', id]); }
+  detail(id) { this.router.navigate(['/user/detail/', id]); }
  async Delete(id) {
    
 
-       const alert = await this.alertCtrl.create({
-    cssClass: 'my-custom-class',
-    header: 'Confirm!',
-    message: 'Are you sure to delete this <strong>user</strong>!!!',
-    buttons: [
-      {
-        text: 'Cancel',
-        role: 'cancel',
-        cssClass: 'secondary',
-        handler: (blah) => {
-          alert.dismiss() ;
-        }
-      }, {
-        text: 'Okay',
-        handler: () => {
-          console.log('delete');
-
-        }
-      }
-    ]
-  });
-
-       await alert.present();
-}
-
-
+ }
 
 
 
@@ -69,10 +44,10 @@ async P() {
   const loading = await this.alertCtrl.create({
     message: 'Loading...'
   });
-  const toast = await this.toastController.create({
-    message: 'click on Product Name',
-    duration: 2000
-  });
+  // const toast = await this.toastController.create({
+  //   message: 'click on Product Name',
+  //   duration: 2000
+  // });
   await loading.present();
 
   await this.db.getAll()
@@ -81,7 +56,7 @@ async P() {
           this.user = data;
           console.log(data);
           loading.dismiss();
-          toast.present();
+          // toast.present();
         },
         error => {
           console.log(error);
@@ -94,29 +69,52 @@ async DeleteU(id)
 {
 
   const toast = await this.toastController.create({
-    message: 'delte',
+    message: 'delete',
     duration: 2000
   });
   const loading = await this.alertCtrl.create({
     message: 'Loading...'
   });
-  await loading.present();
-
+  // await loading.present();
+  const alert = await this.alertCtrl.create({
+    cssClass: 'my-custom-class',
+    header: 'Confirm!',
+    message: 'Are you sure to delete this <strong>user</strong>!!!',
+    buttons: [
+      {
+        text: 'Cancel',
+        role: 'cancel',
+        cssClass: 'secondary',
+        handler: (blah) => {
+          alert.dismiss() ;
+        }
+      }, {
+        text: 'Okay',
+        handler: () => {
   this.db.delete(id)
   .subscribe(
           response => {
             console.log(response);
-            loading.dismiss();
-            toast.present();
+   toast.present();
             this.P();
           },
           error => {
             console.log(error);
-            loading.dismiss();
+
           });  }
 
 
 
+
+
+
+        }
+
+    ]
+  });
+
+       await alert.present();
+}
 
 
 

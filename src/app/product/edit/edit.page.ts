@@ -6,7 +6,7 @@ import { LoadingController, ToastController, NavController, AlertController } fr
 import { category } from 'src/app/models/category';
 import { HttpClient } from '@angular/common/http';
 
-const baseUrl = 'http://localhost:8034/image/product';
+const baseUrl = 'http://localhost:8034/api/image/product';
 
 @Component({
   selector: 'app-edit',
@@ -55,7 +55,7 @@ export class EditPage implements OnInit {
     });
     await loading.present();
 
-    await this.db.get(id)
+    await this.db.findProducts(id)
       .subscribe(
         data => {
           this.currentP = data;
@@ -125,7 +125,7 @@ export class EditPage implements OnInit {
 
   getImage(id) {
     // Make a call to Sprinf Boot to get the Image Bytes.
-    this.httpClient.get('http://localhost:8034/image/' + id)
+    this.httpClient.get('http://localhost:8034/api/image/' + id)
       .subscribe(
         res => {
           this.retrieveResonse = res;
@@ -156,11 +156,13 @@ export class EditPage implements OnInit {
       .subscribe(
         response => {
         loading.dismiss() ;
+        // alert.present() ;
        
 
         }, 
         error => {
           loading.dismiss();
+          // alert2.present() ;
          
         });
   }

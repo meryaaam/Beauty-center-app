@@ -143,12 +143,12 @@ export class ListPage implements OnInit {
 
 
 add() { this.router.navigate(['/product/add']); }
-edite(id) { this.router.navigate(['/product/edit/', id]); }
+edit(id) { this.router.navigate(['/product/edit/', id]); }
 
-detail(id) { this.router.navigate(['/product/detail/', id]); }
+detail(id) { this.router.navigate(['/detail/', id]); }
 
 
-async Delete(id) {
+async delete(id) {
 
   const toast = await this.toastController.create({
         message: 'This product has been removed.',

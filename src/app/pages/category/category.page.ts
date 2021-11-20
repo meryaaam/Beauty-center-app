@@ -31,8 +31,8 @@ products: any ;
     this.category(this.catTitle) ;
   }
 
-async category (catTitle)
-{
+async category(catTitle)
+{ 
   await this.db.category(catTitle)
   .subscribe(
     data => {

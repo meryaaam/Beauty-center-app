@@ -45,7 +45,7 @@ loadChildren: () => import('../app/pages/home/home.module').then(m => m.HomePage
   {
     path: 'product',
     loadChildren: () => import('./product/product/product.module').then( m => m.ProductPageModule),
-    canActivate: [AuthGuard , RoleGuard] , data: {expectedRole: 'ROLE_ADMIN' }
+    canActivate: [AuthGuard ]  
   },
   {
     path: 'user',
@@ -66,11 +66,13 @@ loadChildren: () => import('../app/pages/home/home.module').then(m => m.HomePage
 
 
 
+
+  
   {
-    path: 'detail/:id',
-    loadChildren: () => import('./product/detail/detail.module').then( m => m.DetailPageModule)
-  }
-  ,
+    path: 'details/:id',
+    loadChildren: () => import('./pages/details/details.module').then( m => m.DetailsPageModule)
+  },
+
 
 
 

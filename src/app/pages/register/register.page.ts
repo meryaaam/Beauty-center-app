@@ -47,8 +47,8 @@ export class RegisterPage implements OnInit {
     //  else {if (z) {}
     // }
 
-
-
+  
+    this.form.roles = ['ROLE_MODERATOR'] ;
      this.auth.register(this.form).subscribe(
       data => {
         console.log(data);

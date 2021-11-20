@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="bg">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/"></ion-back-button>
+      <ion-back-button defaultHref="feed/settings"></ion-back-button>
     </ion-buttons>
     <ion-title color="b">List</ion-title>
   </ion-toolbar>
@@ -21,9 +21,9 @@
 <ion-label  button (click)="detail(i.id)" > {{i.name}} </ion-label>
 
 <ion-buttons>
-  <ion-button (click)="edite(i.id)" > <ion-icon name="create"></ion-icon> </ion-button>
+  <ion-button (click)="edit(i.id)" > <ion-icon name="create"></ion-icon> </ion-button>
   <!-- <a href="/admin/product/edit/{{i.id}}"><ion-icon name="create-outline"></ion-icon> </a> -->
-  <ion-button (click)="Delete(i.id)"> <ion-icon name="remove"></ion-icon></ion-button>
+  <ion-button (click)="delete(i.id)"> <ion-icon name="remove"></ion-icon></ion-button>
 </ion-buttons>
 
 

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController, AlertController, ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { TokenService } from 'src/app/services/token.service';
+import { ProductOrder } from 'src/app/models/ProductOrder.model';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.page.html',
@@ -11,6 +12,7 @@ import { TokenService } from 'src/app/services/token.service';
 export class CartPage implements OnInit {
 
   constructor(
+  
     public toastController: ToastController ,
     private token: TokenService ,
     private router: Router ,
@@ -22,10 +24,12 @@ export class CartPage implements OnInit {
   isLoggedIn = true ;
   total: number ;
   isenabled = true ;
+  order :ProductOrder []
 
   ngOnInit() {
     this.isLoggedIn = !!this.token.getToken();
-    this.cart = this.cartService.getCart();
+    this.cart = this.cartService.getCart(); 
+    this.order = this.cartService.order() ;
   }
 
 
@@ -57,10 +61,11 @@ export class CartPage implements OnInit {
     // Perfom PayPal or Stripe checkout process
     let alert = await this.alertCtrl.create({
       header: 'Thanks for your Order!',
-      message: 'We will deliver as soon as possible',
+      message: '<strong>Congratulation!</strong> You successfully made the order.',
       buttons: ['OK']
     });
     if (this.total > 0 ) {
+    this.cartService.saveOrder(this.order).subscribe();
     this.isenabled = true;
     alert.present().then(() => {
    this.modalCtrl.dismiss(); }
@@ -71,6 +76,10 @@ export class CartPage implements OnInit {
    }
 }
 
+ pay() {
+      
+        this.cartService.saveOrder(this.cart).subscribe();
+    }
 
   SingIn() {
 

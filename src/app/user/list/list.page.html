@@ -1,6 +1,9 @@
 <ion-header>
   <ion-toolbar color="bg">
     <ion-title color="b">List</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/admin"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -11,14 +14,13 @@
     <ion-item *ngFor="let i of user ">
  
   <ion-avatar slot="start" button (click)="detail(i.id)">
-    <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+    <img src="{{'../../../../../assets/user/' + i.firstname + '.png'}}">
   </ion-avatar>
 <ion-label  button (click)="detail(i.id)" > {{i.firstname}}  {{i.lastname}}</ion-label>
 
 <ion-buttons>
   <!-- <ion-button (click)="add()" > <ion-icon name="person-add-outline"></ion-icon> </ion-button> -->
-  <ion-button (click)="edite(i.id)"> <ion-icon name="create-outline"></ion-icon></ion-button>
-  <ion-button (click)="DeleteU(i.id)"> <ion-icon name="person-remove-outline"></ion-icon></ion-button>
+   <ion-button (click)="DeleteU(i.id)"> <ion-icon name="person-remove-outline"></ion-icon></ion-button>
 </ion-buttons>
 
 

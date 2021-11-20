@@ -17,14 +17,14 @@
     </ion-fab-button>
   </ion-fab>
 
-  <ion-list>
+  <!-- <ion-list>
     <ion-card>
       <ion-card-header>
-        <!-- <ion-card-title class="ion-text-center">{{c.title}}</ion-card-title> -->
-        <ion-card-title class="ion-text-center"></ion-card-title>
-      </ion-card-header>
+       <ion-card-title class="ion-text-center">{{c.title}}</ion-card-title> -->
+        <!-- <ion-card-title class="ion-text-center"></ion-card-title> -->
+      <!-- </ion-card-header>  -->
     
-    <ion-card-content>
+    <!-- <ion-card-content>
       <ion-slides [options]="sliderConfig">
     
         <ion-slide *ngFor="let p of products">
@@ -51,9 +51,9 @@
     
     
     
-    </ion-card>
+    </ion-card> -->
         
-    </ion-list>
+    <!-- </ion-list> -->
   <!-- </div> -->
 
   <!-- <div *ngIf="!isLoggedIn">
@@ -71,7 +71,8 @@
       <ion-slides [options]="sliderConfig">
     
         <ion-slide *ngFor="let p of products" >
-         
+          <img src="{{'../../../../../assets/product/' + p.name + '.jpg'}}">
+
          <!-- <div *ngFor="let p of products"> -->
           <ion-row class="ion-align-items-center">
             <div class="nc">{{ p.name }} </div> 
@@ -89,7 +90,7 @@
            <ion-img [src]="retrievedImage" ></ion-img>
           <!-- </div> -->
         </ion-slide>
-        
+         
       </ion-slides>
     </ion-card-content>
     

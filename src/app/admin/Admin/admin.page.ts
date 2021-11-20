@@ -29,7 +29,7 @@ export class AdminPage implements OnInit {
     centredSlides: true
     };
     constructor(
-      // private db: ProductService ,
+      private db: ProductService ,
       private router: Router ,
       // private loadingController: LoadingController ,
       // public toastController: ToastController ,
@@ -45,7 +45,7 @@ export class AdminPage implements OnInit {
 
     addp() {this.router.navigate(['product/add']); }
 
-    // upp() { this.router.navigate(['product/edit']) ; }
+  settings() { this.router.navigate(['/feed/settings']) ; }
 
     // upu() { this.router.navigate(['user/edit']) ; }
 
@@ -58,6 +58,23 @@ export class AdminPage implements OnInit {
       // this.router.navigate(['/login']);
       window.location.reload();
     }
-  }
+
+
+
+    delete()
+    {
+
+      this.db.deleteAll().subscribe( 
+      response => {
+        console.log(response);
+        this.router.navigate(['/product/list'])
+    
+      },
+      error => {
+        console.log(error);
+    
+      });  }
+    }
+  
 
 

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 const baseUrl = 'http://localhost:8034/api/products';
-
+const baseUrl2 = 'http://localhost:8034/api/product';
 
 const httpOptions = {
    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -21,7 +21,7 @@ export class ProductService {
   }
 
   get(id) {
-    return this.http.get(`${baseUrl}/${id}`);
+    return this.http.get(`${baseUrl2}/${id}`);
   }
 
   create(data)  {
@@ -61,5 +61,9 @@ export class ProductService {
     return this.http.get(`${baseUrl}/category/${cat}`);
   }
 
+  publish(id) {
+    return this.http.get(`${baseUrl}/publish/${id}`);
+  }
 
+  findProducts(id){ return this.http.get(`${baseUrl}/${id}`);}
 }

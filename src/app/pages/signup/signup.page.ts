@@ -35,13 +35,10 @@ export class SignupPage implements OnInit {
     message: 'Loading...'
   });
 
-
-     const toast = await this.toast.create({
+   const toast = await this.toast.create({
       message: 'Your registration is successful!',
       duration: 2000
     });
-
-
 
     //  if (this.form.email.error.required) { this.msg = 'Email is required' ; }
     //  else {if (z) {}

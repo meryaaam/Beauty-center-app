@@ -57,7 +57,7 @@
         </ion-grid>
       </ion-item>
     </ion-list>
-    <ion-button color="a"expand="full" (click)="checkout()">
+    <ion-button color="a"expand="full" (click)="checkout() "    [disabled]="getTotal() == 0" >
       Checkout
     </ion-button>
  </div>
@@ -72,6 +72,7 @@
     
   </div>
  
+  <!-- {{order|json}} -->
 </ion-content>
 
 

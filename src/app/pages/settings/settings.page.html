@@ -96,11 +96,55 @@
 <ion-buttons icon-only>
 <ion-button icon-only>
   <ion-icon slot ="end" name="chevron-forward-outline"></ion-icon> </ion-button>
+
+
+
+
 </ion-buttons>
   </ion-item>
 
+<div *ngIf="roles()">
+  <ion-item button (click)="managment()" >
+
+      <ion-button color="a" >
+        <ion-icon  name="construct-outline"></ion-icon>
+  </ion-button>
 
 
+<ion-label class="a1" > Managment </ion-label>
+
+<ion-buttons icon-only>
+<ion-button icon-only>
+  <ion-icon slot ="end" name="chevron-forward-outline"></ion-icon> </ion-button>
+
+
+
+  
+</ion-buttons>
+  </ion-item>
+
+</div>
+<div *ngIf="rolesMo()">
+  <ion-item button (click)="product()" >
+
+      <ion-button color="a" >
+        <ion-icon  name="construct-outline"></ion-icon>
+  </ion-button>
+
+
+<ion-label class="a1" > Product </ion-label>
+
+<ion-buttons icon-only>
+<ion-button icon-only>
+  <ion-icon slot ="end" name="chevron-forward-outline"></ion-icon> </ion-button>
+
+
+
+  
+</ion-buttons>
+  </ion-item>
+
+</div>
 
 
 <!-- <ion-list class="a1"> -->
@@ -121,7 +165,10 @@
   <ion-label  class="a2" > Email</ion-label>
   <ion-label  class="a2" >{{this.user.email}}</ion-label>
 </ion-item>
-
+<ion-item >
+  <ion-label  class="a2" > Roles</ion-label>
+  <ion-label  class="a2" > {{this.user.roles}}</ion-label>
+</ion-item>
 
   <ion-item-divider color="bg">
     <ion-label color="b">
